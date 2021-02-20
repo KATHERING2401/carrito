@@ -1,0 +1,14 @@
+
+<IfModule mod_rewrite.c>
+    RewriteEngine on
+    
+    RewriteCond %{REQUEST_FILENAME} -f
+    RewriteRule ^ - [L]
+    
+    RewriteCond %{DOCUMENT_ROOT}/manifest.json -f [NC]
+    
+    # Redirect requests to public
+    RewriteRule  ^$ public/    [L]
+    RewriteRule  (.*) public/$1 [L]
+</IfModule>
+
